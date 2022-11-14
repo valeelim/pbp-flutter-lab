@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './form.dart';
+import './data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,15 +16,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key});
 
-  final String title;
+  final String title = 'Counter 7';
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -50,6 +52,39 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+      ),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            ListTile(
+              title: const Text('counter_7'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyHomePage())
+                );
+              }
+            ),
+            ListTile(
+              title: const Text('Tambah Budget'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context, 
+                  MaterialPageRoute(builder: (context) => const BudgetForm())
+                );
+              }
+            ),
+            ListTile(
+              title: const Text('Data Budget'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context, 
+                  MaterialPageRoute(builder: (context) => const BudgetData())
+                );
+              }
+            )
+          ]
+        )
       ),
       body: Center(
         child: Column(

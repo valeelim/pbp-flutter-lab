@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import './form.dart';
-import './data.dart';
+import './drawerWidget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,39 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            ListTile(
-              title: const Text('counter_7'),
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage())
-                );
-              }
-            ),
-            ListTile(
-              title: const Text('Tambah Budget'),
-              onTap: () {
-                Navigator.pushReplacement(
-                  context, 
-                  MaterialPageRoute(builder: (context) => const BudgetForm())
-                );
-              }
-            ),
-            ListTile(
-              title: const Text('Data Budget'),
-              onTap: () {
-                Navigator.pushReplacement(
-                  context, 
-                  MaterialPageRoute(builder: (context) => const BudgetData())
-                );
-              }
-            )
-          ]
-        )
-      ),
+      drawer: DrawerWidget(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

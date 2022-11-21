@@ -1,8 +1,7 @@
-import './main.dart';
-import 'globals.dart' as globals;
-import 'form.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer';
+import 'globals.dart' as globals;
+
+import './drawerWidget.dart';
 
 class BudgetData extends StatefulWidget {
   const BudgetData({super.key});
@@ -18,33 +17,7 @@ class _BudgetDataState extends State<BudgetData> {
         appBar: AppBar(
           title: Text('Budget Data'),
         ),
-        drawer: Drawer(
-            child: Column(children: [
-          ListTile(
-              title: const Text('counter_7'),
-              onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MyHomePage()));
-              }),
-          ListTile(
-              title: const Text('Tambah Budget'),
-              onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const BudgetForm()));
-              }),
-          ListTile(
-              title: const Text('Data Budget'),
-              onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const BudgetData()));
-              })
-        ])),
+        drawer: DrawerWidget(),
         body: ListView(children: <Widget>[
           for (var item in globals.itemList)
             Container(
@@ -68,7 +41,8 @@ class _BudgetDataState extends State<BudgetData> {
                             )),
                       ),
                       Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 5),
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

@@ -1,8 +1,7 @@
 import 'package:flutter/services.dart';
-import './main.dart';
-import './data.dart';
-import 'globals.dart' as globals;
 import 'package:flutter/material.dart';
+import 'globals.dart' as globals;
+import './drawerWidget.dart';
 
 class BudgetForm extends StatefulWidget {
   const BudgetForm({super.key});
@@ -27,29 +26,7 @@ class _MyFormPageState extends State<BudgetForm> {
       appBar: AppBar(
         title: const Text('Form Budget'),
       ),
-      drawer: Drawer(
-          child: Column(children: [
-        ListTile(
-            title: const Text('counter_7'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const MyHomePage()),
-              );
-            }),
-        ListTile(
-            title: const Text('Tambah Budget'),
-            onTap: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const BudgetForm()));
-            }),
-        ListTile(
-            title: const Text('Data Budget'),
-            onTap: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const BudgetData()));
-            })
-      ])),
+      drawer: DrawerWidget(),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(

@@ -60,4 +60,20 @@ The first one is `form.dart`, which contains the FormFields necessary for the us
 The other one is `data.dart`, which contains the data that the user has submitted into the form.
 To link the data, I created a global list that all application can access using the `import 'globals.dart' as globals`. This is to ease the fact that the variables that contain the data for the user input are all inside `form.dart`, but then we need to access that variable from `data.dart`. So having a global variable helps a ton.
 
-Inside `data.dart`, what it does is basically rendering or outputting the entire list that the user has submitted by using a for loop.s
+Inside `data.dart`, what it does is basically rendering or outputting the entire list that the user has submitted by using a for loop.
+
+# Flutter Web Service Integration (Tugas 9)
+
+## Is JSON models necessary
+No it is not necessary since you could serialize JSON inline by using the `jsonDecode()` function. Creating a factory function inside a model to parse the JSON object is just an easier way to fetch data.
+
+## Widgets
+I moved the drawer widget to `drawerWidget.dart` to make it more accessible to the other files. I also used `InkWell` for the movie lists so that I can actually click it, and then redirect to the details page.
+
+## How to get JSON
+First of all you just pass the url to the API. Once the response is received, you essentially get a JSON object in the form of a string (kinda like json.dumps). To actually process the string, you need to convert it back into JSON format, which you could do using the `jsonDecode()` function. Once you do that, you can access each of the key values of the JSON object.
+
+## Implementation
+- Adding a new page is pretty much the same, just add a new ListTile to the drawer widget.
+- For the `mywatchlist.dart`, I just grabbed the data from `https://vl-pbp-tugas2.herokuapp.com/mywatchlist/json/` which contains the seed data I made for Tugas 3. Once I decoded the data, I then create an InkWell for all of the items I received.
+- InkWell allows me to have a different pointer and some animation when I tap it. When I tap a certain movie, I redirect the page to the details page which I passed a certain context beforehand so that it displays the appropriate information.
